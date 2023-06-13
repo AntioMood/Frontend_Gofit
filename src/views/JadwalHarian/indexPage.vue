@@ -105,7 +105,7 @@
   import axios from 'axios'
   import { onMounted, ref } from 'vue'
   // import { useToast } from 'vue3-toastify';
-
+  import Swal from "sweetalert2";
   
   export default {
     setup() {
@@ -146,6 +146,7 @@
             // router.push({
             //         name: 'jadwalH.index',
             //     });
+            Swal.fire('Berhasil!')
           }).catch(error => {
             console.log(error.response.data)
           })

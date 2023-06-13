@@ -80,6 +80,7 @@
     import { reactive, ref, onMounted } from 'vue'
     import { useRouter, useRoute } from 'vue-router'
     import axios from 'axios'
+    import Swal from "sweetalert2";
 
     export default {
         setup() {
@@ -147,6 +148,7 @@
                     jam_mulai: jam_mulai,
                 }).then(() => {
                     //redirect ke post index
+                    Swal.fire('Berhasil!')
                     router.push({
                         name: 'jadwalU.index'
                     })

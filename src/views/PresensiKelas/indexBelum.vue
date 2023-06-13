@@ -49,6 +49,7 @@
 <script>
 import axios from 'axios'
 import { onMounted, ref } from 'vue'
+import Swal from "sweetalert2";
 
 export default {
     setup() {
@@ -72,6 +73,7 @@ export default {
             .then(() => {     
             //splice instruktur 
                 // window.location.reload();
+                Swal.fire('Berhasil!')
             }).catch(error =>{
                 console.log(error.response.data)
             })

@@ -79,6 +79,7 @@
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export default {
   setup() {
@@ -108,12 +109,28 @@ export default {
     });
 
     function logout() {
-      localStorage.removeItem("Role");
-      localStorage.removeItem("Id_User");
-      router.push({
-        name: "login",
-      });
-
+        Swal.fire({
+            title: 'Hi',
+            text: "Are you sure want logout?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                localStorage.removeItem("Role");
+                localStorage.removeItem("Id_User");
+                router.push({
+                    name: "login",
+                });
+                Swal.fire(
+                'Loggout!',
+                'Your has been logout',
+                'success'
+                )
+            }
+        })
     }
 
     return {
