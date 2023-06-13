@@ -60,7 +60,7 @@ export default {
         //mounted
         onMounted(() => {
             //get API from Laravel Backend
-            axios.get('https://pandu.ppcdeveloper.comapi/perizinan')
+            axios.get('https://pandu.ppcdeveloper.com/api/perizinan')
             .then(response => {
                 //assign state posts with response data
                 perizinans.value = response.data.data
