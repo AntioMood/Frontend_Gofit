@@ -143,9 +143,9 @@
       function JadwalHUpdate(id_jadwalH) {
         axios.put(`https://pandu.ppcdeveloper.com/api/jadwalH/${id_jadwalH}`)
           .then(() => {
-            router.push({
-                    name: 'jadwalH.index',
-                });
+            // router.push({
+            //         name: 'jadwalH.index',
+            //     });
           }).catch(error => {
             console.log(error.response.data)
           })

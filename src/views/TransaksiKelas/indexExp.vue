@@ -77,7 +77,7 @@ export default {
           axios.post(`https://pandu.ppcdeveloper.com/api/depoK/${id_TdepoK}`)
           .then(() => {     
             //splice instruktur 
-                window.location.reload();
+                // window.location.reload();
             }).catch(error =>{
                 console.log(error.response.data)
             })

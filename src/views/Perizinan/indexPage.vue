@@ -76,7 +76,7 @@ export default {
           axios.post(`https://pandu.ppcdeveloper.com/api/perizinan/${id_perizinan}`)
             .then(() => {     
             //splice instruktur 
-                window.location.reload();
+                // window.location.reload();
             }).catch(error =>{
                 console.log(error.response.data)
             })

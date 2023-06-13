@@ -71,7 +71,7 @@ export default {
           axios.post(`https://pandu.ppcdeveloper.com/api/konfirmasiK/${id_booking}`)
             .then(() => {     
             //splice instruktur 
-                window.location.reload();
+                // window.location.reload();
             }).catch(error =>{
                 console.log(error.response.data)
             })
