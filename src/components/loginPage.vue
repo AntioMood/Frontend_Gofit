@@ -64,6 +64,7 @@
 import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
+import Swal from "sweetalert2";
 export default {
   setup() {
     const pegawai = reactive({
@@ -95,6 +96,7 @@ export default {
             if (response.data.success) {
                 localStorage.setItem('role', response.data.role);
                 localStorage.setItem('id', response.data.id);
+                Swal.fire('Berhasil Login!')
                 router.push({
                     name: 'beranda',
                     params: {
@@ -105,6 +107,7 @@ export default {
             }
              else {
                 showError.value = true; // Menampilkan pesan sukses
+                Swal.fire('Failed Login', 'Email atau Password Anda salah.', 'error')
                 setTimeout(() => {
                     showError.value = false; // Menyembunyikan pesan sukses setelah beberapa detik
                 }, 3000);
