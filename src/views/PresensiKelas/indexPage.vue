@@ -82,7 +82,7 @@ export default {
         //mounted
         onMounted(() => {
             //get API from Laravel Backend
-            axios.get('http://127.0.0.1:8000/api/showSudahK')
+            axios.get('https://pandu.ppcdeveloper.com/api/showSudahK')
             .then(response => {
                 //assign state posts with response data
                 booking_kelas.value = response.data.data

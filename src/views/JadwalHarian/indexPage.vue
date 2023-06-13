@@ -119,7 +119,7 @@
       // Mounted
       onMounted(() => {
         // Get API from Laravel Backend
-        axios.get('http://localhost:8000/api/jadwalH')
+        axios.get('https://pandu.ppcdeveloper.com/api/jadwalH')
           .then(response => {
             // Assign state posts with response data
             jadwal_harians.value = groupByDay(response.data.data);
@@ -141,7 +141,7 @@
       }
   
       function JadwalHUpdate(id_jadwalH) {
-        axios.put(`http://localhost:8000/api/jadwalH/${id_jadwalH}`)
+        axios.put(`https://pandu.ppcdeveloper.com/api/jadwalH/${id_jadwalH}`)
           .then(() => {
             window.location.reload();
           }).catch(error => {
@@ -150,7 +150,7 @@
       }
   
       function store() {
-        axios.post(`http://localhost:8000/api/jadwalH`)
+        axios.post(`https://pandu.ppcdeveloper.com/api/jadwalH`)
           .then(response => response.data)
           .then(data => {
             console.log(data); 

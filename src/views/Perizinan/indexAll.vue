@@ -60,7 +60,7 @@ export default {
         //mounted
         onMounted(() => {
             //get API from Laravel Backend
-            axios.get('http://localhost:8000/api/perizinan')
+            axios.get('https://pandu.ppcdeveloper.comapi/perizinan')
             .then(response => {
                 //assign state posts with response data
                 perizinans.value = response.data.data
@@ -70,7 +70,7 @@ export default {
         })
 
         // function konfirmasi(id_perizinan){
-        //   axios.post(`http://localhost:8000/api/perizinan/${id_perizinan}`)
+        //   axios.post(`https://pandu.ppcdeveloper.comapi/perizinan/${id_perizinan}`)
         //     .then(() => {     
         //     //splice instruktur 
         //         window.location.reload();

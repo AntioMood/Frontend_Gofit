@@ -72,7 +72,7 @@
 
             onMounted(() => {
                 //get API from Laravel Backend
-                axios.get('http://localhost:8000/api/member')
+                axios.get('https://pandu.ppcdeveloper.com/api/member')
                 .then(response => {
                     //assign state posts with response data
                     member.value = response.data.data
@@ -80,7 +80,7 @@
                     console.log(error.response.data)
                 })
 
-                // axios.get('http://localhost:8000/api/pegawai')
+                // axios.get('https://pandu.ppcdeveloper.com/api/pegawai')
                 // .then(response => {
                 //     //assign state posts with response data
                 //     pegawai.value = response.data.data
@@ -96,7 +96,7 @@
                 let id_member = depoUang.id_member
                 let depoU = depoUang.depoU
 
-                axios.post('http://localhost:8000/api/depoU', {
+                axios.post('https://pandu.ppcdeveloper.com/api/depoU', {
                     id_pegawai: id_pegawai,
                     id_member: id_member,
                     depoU: depoU

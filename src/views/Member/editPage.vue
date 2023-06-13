@@ -153,7 +153,7 @@
 
             onMounted(() => {
             //get API from Laravel Backend
-                axios.get(`http://localhost:8000/api/member/${route.params.id_member}`)
+                axios.get(`https://pandu.ppcdeveloper.com/api/member/${route.params.id_member}`)
                 .then(response => {
                     //assign state posts with response data
                     member.nama_member = response.data.data.nama_member  
@@ -186,7 +186,7 @@
                 let tgl_pembuatan = member.tgl_pembuatan
                 let tgl_exp = member.tgl_exp
                 let jenis_kelamin = member.jenis_kelamin
-                axios.put(`http://localhost:8000/api/member/${route.params.id_member}`, {
+                axios.put(`https://pandu.ppcdeveloper.com/api/member/${route.params.id_member}`, {
                     nama_member: nama_member,
                     tgl_lahir: tgl_lahir,
                     alamat: alamat,

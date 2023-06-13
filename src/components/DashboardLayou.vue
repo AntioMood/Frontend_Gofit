@@ -92,7 +92,7 @@ export default {
 
     onMounted(() => {
       //get API from Laravel Backend
-      axios.get("http://127.0.0.1:8000/api/pegawai/" + localStorage.getItem("id"))
+      axios.get("https://pandu.ppcdeveloper.com/api/pegawai/" + localStorage.getItem("id"))
         .then((response) => {
           //assign state posts with response data
           pegawai.value = response.data.data;

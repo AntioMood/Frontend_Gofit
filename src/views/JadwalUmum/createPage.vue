@@ -102,7 +102,7 @@
 
             onMounted(() => {
                 //get API from Laravel Backend
-                axios.get('http://localhost:8000/api/kelas')
+                axios.get('https://pandu.ppcdeveloper.com/api/kelas')
                 .then(response => {
                     //assign state posts with response data
                     kelas.value = response.data.data
@@ -111,7 +111,7 @@
                     console.log(error.response.data)
                 })
 
-                axios.get('http://localhost:8000/api/instruktur')
+                axios.get('https://pandu.ppcdeveloper.com/api/instruktur')
                 .then(response => {
                     //assign state posts with response data
                     instruktur.value = response.data.data
@@ -127,7 +127,7 @@
                 let hari = jadwal_umum.hari
                 let jam_mulai = jadwal_umum.jam_mulai
 
-                axios.post('http://localhost:8000/api/jadwalU', {
+                axios.post('https://pandu.ppcdeveloper.com/api/jadwalU', {
                     id_instruktur: id_instruktur,
                     id_kelas: id_kelas,
                     hari: hari,

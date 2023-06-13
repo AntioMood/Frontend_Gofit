@@ -105,7 +105,7 @@
 
             onMounted(() => {
             //get API from Backend
-            axios.get('http://localhost:8000/api/kelas')
+            axios.get('https://pandu.ppcdeveloper.com/api/kelas')
                 .then(response => {
                     //assign state posts with response data
                     kelas.value = response.data.data
@@ -113,7 +113,7 @@
                     console.log(error.response.data)
                 })
 
-                axios.get('http://localhost:8000/api/instruktur')
+                axios.get('https://pandu.ppcdeveloper.com/api/instruktur')
                 .then(response => {
                     //assign state posts with response data
                     instruktur.value = response.data.data
@@ -121,7 +121,7 @@
                     console.log(error.response.data)
                 })
 
-                axios.get(`http://localhost:8000/api/jadwalU/${route.params.id_jadwalU}`)
+                axios.get(`https://pandu.ppcdeveloper.com/api/jadwalU/${route.params.id_jadwalU}`)
                 .then(response => {
                     //assign state posts with response data
                     jadwal_umums.id_instruktur = response.data.data.id_instruktur
@@ -140,7 +140,7 @@
                 let hari = jadwal_umums.hari
                 let jam_mulai = jadwal_umums.jam_mulai
 
-                axios.put(`http://localhost:8000/api/jadwalU/${route.params.id_jadwalU}`, {
+                axios.put(`https://pandu.ppcdeveloper.com/api/jadwalU/${route.params.id_jadwalU}`, {
                     id_instruktur: id_instruktur,
                     id_kelas: id_kelas,
                     hari: hari,

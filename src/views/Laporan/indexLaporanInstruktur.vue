@@ -53,7 +53,7 @@ export default {
         //mounted 
         onMounted(() => {
             //get API from Laravel Backend 
-            axios.get('http://127.0.0.1:8000/api/laporan_instruktur') 
+            axios.get('https://pandu.ppcdeveloper.com/api/laporan_instruktur') 
             .then(response => { 
                 //assign state posts with response data 
                 laporanInstrukturs.value = response.data.data 

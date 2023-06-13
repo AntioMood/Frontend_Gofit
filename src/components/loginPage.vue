@@ -85,7 +85,7 @@ export default {
       let password = pegawai.password;
 
       axios
-        .post("http://127.0.0.1:8000/api/login", {
+        .post("https://pandu.ppcdeveloper.com/api/login", {
           email: email,
           password: password,
           

@@ -86,7 +86,7 @@ export default {
         //mounted
         onMounted(() => {
             //get API from Laravel Backend
-            axios.get('http://localhost:8000/api/depoK')
+            axios.get('https://pandu.ppcdeveloper.com/api/depoK')
             .then(response => {
                 //assign state posts with response data
                 transaksi_deposit_kelas.value = response.data.data

@@ -64,7 +64,7 @@ export default {
         //mounted
         onMounted(() => {
             //get API from Laravel Backend
-            axios.get('http://localhost:8000/api/depoK_show')
+            axios.get('https://pandu.ppcdeveloper.com/api/depoK_show')
             .then(response => {
                 //assign state posts with response data
                 transaksi_deposit_kelas.value = response.data.data
@@ -74,7 +74,7 @@ export default {
         })
 
         function resetDepoK(id_TdepoK){
-          axios.post(`http://localhost:8000/api/depoK/${id_TdepoK}`)
+          axios.post(`https://pandu.ppcdeveloper.com/api/depoK/${id_TdepoK}`)
           .then(() => {     
             //splice instruktur 
                 window.location.reload();

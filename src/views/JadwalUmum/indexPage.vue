@@ -57,7 +57,7 @@ export default {
         //mounted
         onMounted(() => {
             //get API from Laravel Backend
-            axios.get('http://localhost:8000/api/jadwalU')
+            axios.get('https://pandu.ppcdeveloper.com/api/jadwalU')
             .then(response => {
                 //assign state posts with response data
                 jadwal_umums.value = response.data.data
@@ -67,7 +67,7 @@ export default {
         })
 
         function JadwalUDelete(id_jadwalU){
-          axios.delete(`http://localhost:8000/api/jadwalU/${id_jadwalU}`)
+          axios.delete(`https://pandu.ppcdeveloper.com/api/jadwalU/${id_jadwalU}`)
             .then(() => {     
             //splice instruktur 
               jadwal_umums.value.splice(jadwal_umums.value.indexOf(id_jadwalU),1)

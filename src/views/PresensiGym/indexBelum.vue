@@ -52,7 +52,7 @@ export default {
         //mounted
         onMounted(() => {
             //get API from Laravel Backend
-            axios.get('http://127.0.0.1:8000/api/showBelum')
+            axios.get('https://pandu.ppcdeveloper.com/api/showBelum')
             .then(response => {
                 //assign state posts with response data
                 booking_gyms.value = response.data.data
@@ -62,7 +62,7 @@ export default {
         })
 
         function konfirmasi(id_booking_gym){
-          axios.post(`http://localhost:8000/api/konfirmasiG/${id_booking_gym}`)
+          axios.post(`https://pandu.ppcdeveloper.com/api/konfirmasiG/${id_booking_gym}`)
             .then(() => {     
             //splice instruktur 
                 window.location.reload();

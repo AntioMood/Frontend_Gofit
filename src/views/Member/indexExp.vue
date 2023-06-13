@@ -80,7 +80,7 @@ export default {
         //mounted
         onMounted(() => {
             //get API from Laravel Backend
-            axios.get('http://localhost:8000/api/member_show')
+            axios.get('https://pandu.ppcdeveloper.com/api/member_show')
             .then(response => {
                 //assign state posts with response data
                 members.value = response.data.data
@@ -90,7 +90,7 @@ export default {
         })
 
         function deaktivasi(id_member){
-          axios.post(`http://localhost:8000/api/member_exp/${id_member}`)
+          axios.post(`https://pandu.ppcdeveloper.com/api/member_exp/${id_member}`)
             .then(() => {     
             //splice instruktur 
                 window.location.reload();

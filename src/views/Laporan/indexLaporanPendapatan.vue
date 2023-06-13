@@ -65,7 +65,7 @@ export default {
         //mounted 
         onMounted(() => {            
             //get API from Laravel Backend
-            axios.get('http://127.0.0.1:8000/api/laporan_pendapatan') 
+            axios.get('https://pandu.ppcdeveloper.com/api/laporan_pendapatan') 
             .then(response => {
                 dataLaporanAlls.value = response.data.data 
                 Total.value = response.data.Total

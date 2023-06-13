@@ -60,7 +60,7 @@ export default {
         //mounted
         onMounted(() => {
             //get API from Laravel Backend
-            axios.get('http://localhost:8000/api/instruktur')
+            axios.get('https://pandu.ppcdeveloper.com/api/instruktur')
             .then(response => {
                 //assign state posts with response data
                 instrukturs.value = response.data.data
@@ -70,7 +70,7 @@ export default {
         })
 
         function instrukturDelete(id_instruktur){
-          axios.delete(`http://localhost:8000/api/instruktur/${id_instruktur}`)
+          axios.delete(`https://pandu.ppcdeveloper.com/api/instruktur/${id_instruktur}`)
             .then(() => {     
             //splice instruktur 
               instrukturs.value.splice(instrukturs.value.indexOf(id_instruktur),1)
@@ -81,7 +81,7 @@ export default {
         }
 
         function resetTerlambat(){
-            axios.post(`http://localhost:8000/api/instruktur_reset`)
+            axios.post(`https://pandu.ppcdeveloper.com/api/instruktur_reset`)
             .then(() => {     
             //splice instruktur 
                 window.location.reload();

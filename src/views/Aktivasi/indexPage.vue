@@ -69,7 +69,7 @@ export default {
         //mounted
         onMounted(() => {
             //get API from Laravel Backend
-            axios.get('http://localhost:8000/api/aktivasi')
+            axios.get('https://pandu.ppcdeveloper.com/api/aktivasi')
             .then(response => {
                 //assign state posts with response data
                 aktivasi_tahunans.value = response.data.data

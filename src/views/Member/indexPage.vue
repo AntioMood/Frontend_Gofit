@@ -98,7 +98,7 @@ export default {
         //mounted
         onMounted(() => {
             //get API from Laravel Backend
-            axios.get('http://localhost:8000/api/member')
+            axios.get('https://pandu.ppcdeveloper.com/api/member')
             .then(response => {
                 //assign state posts with response data
                 members.value = response.data.data
@@ -108,7 +108,7 @@ export default {
         })
 
         function memberDelete(id_member){
-          axios.delete(`http://localhost:8000/api/member/${id_member}`)
+          axios.delete(`https://pandu.ppcdeveloper.com/api/member/${id_member}`)
             .then(() => {     
             //splice instruktur 
               members.value.splice(members.value.indexOf(id_member),1)
@@ -119,7 +119,7 @@ export default {
         }
 
         function resetPassword(id_member){
-          axios.post(`http://localhost:8000/api/member/${id_member}`)
+          axios.post(`https://pandu.ppcdeveloper.com/api/member/${id_member}`)
             .then(response => {
                     //assign state posts with response data
                     member.password = response.data.data.password

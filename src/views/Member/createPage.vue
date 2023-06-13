@@ -160,7 +160,7 @@
                 // let tgl_exp = member.tgl_exp
                 let jenis_kelamin = member.jenis_kelamin
 
-                axios.post('http://localhost:8000/api/member', {
+                axios.post('https://pandu.ppcdeveloper.com/api/member', {
                     nama_member: nama_member,
                     tgl_lahir: tgl_lahir,
                     alamat: alamat,

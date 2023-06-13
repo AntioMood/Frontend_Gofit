@@ -103,7 +103,7 @@
                 let email = instruktur.email
                 let pass = instruktur.pass
 
-                axios.post('http://localhost:8000/api/instruktur', {
+                axios.post('https://pandu.ppcdeveloper.com/api/instruktur', {
                     nama_instruktur: nama_instruktur,
                     jenis_kelamin: jenis_kelamin,
                     tgl_lahir: tgl_lahir,

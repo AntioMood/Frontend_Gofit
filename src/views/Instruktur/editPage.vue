@@ -87,7 +87,7 @@
 
             onMounted(() => {
             //get API from Laravel Backend
-                axios.get(`http://localhost:8000/api/instruktur/${route.params.id_instruktur}`)
+                axios.get(`https://pandu.ppcdeveloper.com/api/instruktur/${route.params.id_instruktur}`)
                 .then(response => {
                     //assign state posts with response data
                     instruktur.nama_instruktur = response.data.data.nama_instruktur  
@@ -109,7 +109,7 @@
                 let no_telp = instruktur.no_telp
                 let email = instruktur.email
 
-                axios.put(`http://localhost:8000/api/instruktur/${route.params.id_instruktur}`, {
+                axios.put(`https://pandu.ppcdeveloper.com/api/instruktur/${route.params.id_instruktur}`, {
                     nama_instruktur: nama_instruktur,
                     jenis_kelamin: jenis_kelamin,
                     tgl_lahir: tgl_lahir,

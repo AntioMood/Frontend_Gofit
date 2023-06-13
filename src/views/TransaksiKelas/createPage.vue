@@ -96,7 +96,7 @@
 
             onMounted(() => {
                 //get API from Laravel Backend
-                axios.get('http://localhost:8000/api/member')
+                axios.get('https://pandu.ppcdeveloper.com/api/member')
                 .then(response => {
                     //assign state posts with response data
                     member.value = response.data.data
@@ -104,7 +104,7 @@
                     console.log(error.response.data)
                 })
 
-                // axios.get('http://localhost:8000/api/pegawai')
+                // axios.get('https://pandu.ppcdeveloper.com/api/pegawai')
                 // .then(response => {
                 //     //assign state posts with response data
                 //     pegawai.value = response.data.data
@@ -112,7 +112,7 @@
                 //     console.log(error.response.data)
                 // })
 
-                axios.get('http://localhost:8000/api/kelas')
+                axios.get('https://pandu.ppcdeveloper.com/api/kelas')
                 .then(response => {
                     //assign state posts with response data
                     kelas.value = response.data.data
@@ -129,7 +129,7 @@
                 let id_kelas = depoKelas.id_kelas
                 let depoK = depoKelas.depoK
 
-                axios.post('http://localhost:8000/api/depoK', {
+                axios.post('https://pandu.ppcdeveloper.com/api/depoK', {
                     id_pegawai: id_pegawai,
                     id_member: id_member,
                     id_kelas: id_kelas,
