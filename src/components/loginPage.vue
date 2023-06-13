@@ -107,7 +107,7 @@ export default {
             }
              else {
                 showError.value = true; // Menampilkan pesan sukses
-                Swal.fire('Failed Login', 'Email atau Password Anda salah.', 'error')
+                
                 setTimeout(() => {
                     showError.value = false; // Menyembunyikan pesan sukses setelah beberapa detik
                 }, 3000);
@@ -115,6 +115,13 @@ export default {
         })
         .catch((error) => {
           validation.value = error.response.data;
+          Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Email atau Password Anda salah.',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
           
         });
     }
