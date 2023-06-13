@@ -76,6 +76,7 @@ export default {
                 Swal.fire('Berhasil!')
             }).catch(error =>{
                 console.log(error.response.data)
+                Swal.fire('Instruktur Belum di presensi!')
             })
         }
 
