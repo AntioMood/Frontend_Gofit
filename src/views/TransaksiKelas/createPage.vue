@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="content" class="form-label">Status</label>
+                                <label for="content" class="form-label">Jumlah Deposit Kelas</label>
                                 <select name="status" id="status" class="form-select" v-model="depoKelas.depoK" required>
                                     <option value="5">5</option>
                                     <option value="10">10</option>
