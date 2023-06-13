@@ -8,10 +8,6 @@
                     <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                        <div v-if="loginFailed" class="alert alert-danger">
-                            Email atau Password Anda salah.
-                        </div>
-
                         <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
 
                         <form class="mx-1 mx-md-4" @submit.prevent="login">
@@ -40,6 +36,10 @@
 
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                             <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                        </div>
+
+                        <div v-show="showError" class="alert alert-danger">
+                            Email atau Password Anda salah.
                         </div>
 
                         </form>
@@ -75,9 +75,10 @@ export default {
 
     const router = useRouter();
 
-    const loginFailed = ref(null)
+    // const loginFailed = ref(null)
 
     const validation = ref([]);
+    let showError = ref(false);
 
 
     function login() {
@@ -101,12 +102,17 @@ export default {
                         text: 'Berhasil Login',
                     },
                 });
-            } else {
-                loginFailed.value = true;
+            }
+             else {
+                showError.value = true; // Menampilkan pesan sukses
+                setTimeout(() => {
+                    showError.value = false; // Menyembunyikan pesan sukses setelah beberapa detik
+                }, 3000);
             }
         })
         .catch((error) => {
           validation.value = error.response.data;
+          
         });
     }
 
@@ -115,8 +121,9 @@ export default {
       pegawai, 
       validation, 
       message,
-      loginFailed,
+    //   loginFailed,
       login, 
+      showError
     };
   },
 };

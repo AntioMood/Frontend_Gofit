@@ -143,7 +143,7 @@
       function JadwalHUpdate(id_jadwalH) {
         axios.put(`https://pandu.ppcdeveloper.com/api/jadwalH/${id_jadwalH}`)
           .then(() => {
-            window.location.reload();
+            // window.location.reload();
           }).catch(error => {
             console.log(error.response.data)
           })
@@ -157,7 +157,7 @@
             showSuccess.value = true; // Menampilkan pesan sukses
             setTimeout(() => {
               showSuccess.value = false;
-              window.location.reload(); // Menyembunyikan pesan sukses setelah beberapa detik
+              // window.location.reload(); // Menyembunyikan pesan sukses setelah beberapa detik
             }, 3000);
             
           }).catch(error => {
