@@ -19,23 +19,79 @@
               </button>
               <table class="table table-striped table-bordered mt-4">
   
-                <thead class="thead-dark">
+                <!-- <thead class="thead-dark">
                   <tr>
-                    <th scope="col">Hari</th>
-                    <th scope="col">Jam 08.00 - 09.30</th>
-                    <th scope="col">Jam 09.30 - 11.00</th>
-                    <th scope="col">Jam 17.00 - 18.30</th>
-                    <th scope="col">Jam 18.30 - 20.00</th>
+                    <th scope="col">Hari / Tanggal</th>
+                    
                   </tr>
-                </thead>
+                </thead> -->
                 <tbody>
-                  <tr v-for="(jadwal_harian, id_jadwalH) in jadwal_harians" :key="id_jadwalH">
-                    <td>{{ jadwal_harian.hari }}</td>
-                    <td>{{ getTimeSlot(jadwal_harian, '08:00', '09:30') }}</td>
-                    <td>{{ getTimeSlot(jadwal_harian, '09:30', '11:00') }}</td>
-                    <td>{{ getTimeSlot(jadwal_harian, '17:00', '18:30') }}</td>
-                    <td>{{ getTimeSlot(jadwal_harian, '18:30', '20:00') }}</td>
-                  </tr>
+                  <template v-for="(row, rowIndex) in jadwal_harians" :key="rowIndex">
+                    <tr>
+                      <td class="text-center">
+                        {{ row[0].hari }}
+                        <br>
+                        {{ row[0].tanggal }}
+                      </td>
+                      <td class="text-center" v-for="jadwal_harian in row" :key="jadwal_harian.id_jadwalH">
+                        <div v-if="getTimeSlot(jadwal_harian, '08:00', '09:30') !== '-'">
+                          {{ getTimeSlot(jadwal_harian, '08:00', '09:30').jam_mulai }}
+                          <br> 
+                          {{ getTimeSlot(jadwal_harian, '08:00', '09:30').kelas }}
+                          <br> 
+                          {{ getTimeSlot(jadwal_harian, '08:00', '09:30').instruktur }} 
+                          <br>
+                          {{ getTimeSlot(jadwal_harian, '08:00', '09:30').status }}
+                          <br>
+                          <button @click.prevent="JadwalHUpdate(jadwal_harian.id_jadwalH)" class="btn btn-sm btn-primary mr-1">
+                            Ubah Menjadi Libur
+                          </button>
+                        </div>
+                        <div v-else-if="getTimeSlot(jadwal_harian, '09:30', '11:00') !== '-'" >
+                          {{ getTimeSlot(jadwal_harian, '09:30', '11:00').jam_mulai }} 
+                          <br>
+                          {{ getTimeSlot(jadwal_harian, '09:30', '11:00').kelas }} 
+                          <br>
+                          {{ getTimeSlot(jadwal_harian, '09:30', '11:00').instruktur }} 
+                          <br>
+                          {{ getTimeSlot(jadwal_harian, '09:30', '11:00').status }}
+                          <br>
+                          <button @click.prevent="JadwalHUpdate(jadwal_harian.id_jadwalH)" class="btn btn-sm btn-primary mr-1">
+                            Ubah Menjadi Libur
+                          </button>
+                        </div>
+                        <div v-else-if="getTimeSlot(jadwal_harian, '17:00', '18:30') !== '-'" >
+                          {{ getTimeSlot(jadwal_harian, '17:00', '18:30').jam_mulai }} 
+                          <br>
+                          {{ getTimeSlot(jadwal_harian, '17:00', '18:30').kelas }} 
+                          <br>
+                          {{ getTimeSlot(jadwal_harian, '17:00', '18:30').instruktur }} 
+                          <br>
+                          {{ getTimeSlot(jadwal_harian, '17:00', '18:30').status }}
+                          <br>
+                          <button @click.prevent="JadwalHUpdate(jadwal_harian.id_jadwalH)" class="btn btn-sm btn-primary mr-1">
+                            Ubah Menjadi Libur
+                          </button>
+                        </div>
+                        <div v-else-if="getTimeSlot(jadwal_harian, '18:30', '20:00') !== '-'" >
+                          {{ getTimeSlot(jadwal_harian, '18:30', '20:00').jam_mulai }} 
+                          <br>
+                          {{ getTimeSlot(jadwal_harian, '18:30', '20:00').kelas }} 
+                          <br>
+                          {{ getTimeSlot(jadwal_harian, '18:30', '20:00').instruktur }} 
+                          <br>
+                          {{ getTimeSlot(jadwal_harian, '18:30', '20:00').status }}
+                          <br>
+                          <button @click.prevent="JadwalHUpdate(jadwal_harian.id_jadwalH)" class="btn btn-sm btn-primary mr-1">
+                            Ubah Menjadi Libur
+                          </button>
+                        </div>
+                        <div v-else>
+                          - 
+                        </div>
+                      </td>
+                    </tr>
+                  </template>
                 </tbody>
               </table>
             </div>
@@ -66,11 +122,23 @@
         axios.get('http://localhost:8000/api/jadwalH')
           .then(response => {
             // Assign state posts with response data
-            jadwal_harians.value = response.data.data
+            jadwal_harians.value = groupByDay(response.data.data);
           }).catch(error => {
             console.log(error.response.data)
           })
       })
+
+      function groupByDay(data) {
+        return data.reduce((acc, item) => {
+          const dayIndex = acc.findIndex(group => group[0].hari === item.hari && group[0].tanggal === item.tanggal);
+          if (dayIndex > -1) {
+            acc[dayIndex].push(item);
+          } else {
+            acc.push([item]);
+          }
+          return acc;
+        }, []);
+      }
   
       function JadwalHUpdate(id_jadwalH) {
         axios.put(`http://localhost:8000/api/jadwalH/${id_jadwalH}`)
@@ -106,10 +174,12 @@
         const jam_selesai = jadwal_harian.jam_selesai;
   
         if (isTimeBetween(jam_mulai, jam_selesai, startTime, endTime)) {
-          return jadwal_harian.kelas.nama_kelas, 
-          jadwal_harian.instruktur.nama_instruktur, 
-          jadwal_harian.tanggal, 
-          jadwal_harian.status;
+          return {
+            kelas: jadwal_harian.kelas.nama_kelas,
+            instruktur: jadwal_harian.instruktur.nama_instruktur,
+            jam_mulai: jadwal_harian.jam_mulai,
+            status: jadwal_harian.status
+          };
         } else {
           return '-';
         }
@@ -136,6 +206,7 @@
         getTimeSlot,
         showSuccess,
         showError,
+        groupByDay
       }
     }
   }

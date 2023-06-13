@@ -1,6 +1,9 @@
 <template>
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Gofit</a>
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Gofit 
+            <br>
+            Nama User : {{ pegawai.nama_pegawai }}
+        </a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" 
             type="button" 
             data-bs-toggle="collapse" 
@@ -60,11 +63,10 @@
             </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"> 
-                <h5 class="  mt-3" v-if="role === '1'">Halo {{ pegawai.nama_pegawai }}!!</h5>
                 <h5 class="  mt-3" v-if="role === '1'">Sebagai Kasir</h5>
-                <h5 class="  mt-3" v-if="role === '2'">Halo {{ pegawai.nama_pegawai }}!!</h5>
+
                 <h5 class="  mt-3" v-if="role === '2'">Sebagai MO</h5>
-                <h5 class="  mt-3" v-if="role === '3'">Halo {{ pegawai.nama_pegawai }}!!</h5>
+
                 <h5 class="  mt-3" v-if="role === '3'">Sebagai Admin</h5>
                 <!-- View Route -->
                 <router-view></router-view>

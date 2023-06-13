@@ -13,7 +13,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="content" class="form-label">Nama Member</label>
-                                <select name="id_member" id="id_member" class="form-select" v-model="depoUang.id_member">
+                                <select name="id_member" id="id_member" class="form-select" v-model="depoUang.id_member" required>
 
                                     <option v-for="(item, id_member) in member" :key="id_member" v-bind:value="item.id_member">
                                         {{ item.id_member }} - {{item.nama_member}}
@@ -21,15 +21,18 @@
                                 </select>
 
                                 <!-- validation -->
-                                <div v-if="validation.id_member" class="mt-2 alert alert-danger">
+                                <div v-if="validation.id_member && submitted" class="mt-2 alert alert-danger">
                                     {{ validation.id_member[0] }}
                                 </div>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="content" class="form-label">Deposit Uang yang akan dimasukan</label>
-                                <input class="form-control" type="float" v-model="depoUang.depoU" placeholder="Masukkan Deposit Uang">
+                                <input class="form-control" type="float" v-model="depoUang.depoU" placeholder="Masukkan Deposit Uang" required>
+                                <div v-show="showError" class="alert alert-danger">
+                                    Minimal Deposit Rp 500.000
+                                </div>
                                 <!--validation-->
-                                <div v-if="validation.depoU" class="mt-2 alert alert-danger">
+                                <div v-if="validation.depoU && submitted" class="mt-2 alert alert-danger">
                                     {{ validation.depoU[0]}}
                                 </div>
                             </div>
@@ -64,6 +67,8 @@
             const validation = ref([])
             //vue router
             const router = useRouter()
+            let showError = ref(false);
+            const submitted = ref(false);
 
             onMounted(() => {
                 //get API from Laravel Backend
@@ -86,6 +91,7 @@
 
             //method store
             function store() {
+                submitted.value = true;
                 let id_pegawai = localStorage.getItem('id')
                 let id_member = depoUang.id_member
                 let depoU = depoUang.depoU
@@ -102,6 +108,10 @@
                     }).catch(error => {
                         //assign state validation with error
                         validation.value = error.response.data
+                        showError.value = true; // Menampilkan pesan sukses
+                        setTimeout(() => {
+                            showError.value = false; // Menyembunyikan pesan sukses setelah beberapa detik
+                        }, 3000);
                     })
 
             }
@@ -113,7 +123,8 @@
                 router,
                 store,
                 pegawai,
-                member            
+                member,
+                showError           
             }
         }
     }    
